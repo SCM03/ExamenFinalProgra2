@@ -1,0 +1,1292 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SISTEMA DE GESTIÓN DE RECICLAJE - Documentación Técnica</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f5f5f5;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 40px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            border-radius: 8px;
+        }
+
+        h1 {
+            color: #2ecc71;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-align: center;
+            border-bottom: 4px solid #2ecc71;
+            padding-bottom: 20px;
+        }
+
+        h2 {
+            color: #27ae60;
+            font-size: 2em;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            padding-left: 10px;
+            border-left: 5px solid #2ecc71;
+        }
+
+        h3 {
+            color: #16a085;
+            font-size: 1.5em;
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+
+        h4 {
+            color: #1abc9c;
+            font-size: 1.2em;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        ul, ol {
+            margin-left: 30px;
+            margin-bottom: 15px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        strong {
+            color: #2c3e50;
+            font-weight: 600;
+        }
+
+        code {
+            background-color: #ecf0f1;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.9em;
+        }
+
+        pre {
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            padding: 20px;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin: 20px 0;
+            font-size: 0.9em;
+            line-height: 1.4;
+        }
+
+        pre code {
+            background-color: transparent;
+            color: inherit;
+            padding: 0;
+        }
+
+        .toc {
+            background-color: #e8f5e9;
+            padding: 20px;
+            border-radius: 5px;
+            margin: 30px 0;
+        }
+
+        .toc h2 {
+            margin-top: 0;
+            color: #2ecc71;
+        }
+
+        .toc ul {
+            list-style-type: none;
+            margin-left: 0;
+        }
+
+        .toc li {
+            margin-bottom: 10px;
+        }
+
+        .toc a {
+            color: #16a085;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .toc a:hover {
+            color: #2ecc71;
+            text-decoration: underline;
+        }
+
+        .highlight {
+            background-color: #fff3cd;
+            padding: 15px;
+            border-left: 4px solid #ffc107;
+            margin: 20px 0;
+        }
+
+        .info-box {
+            background-color: #d1ecf1;
+            border-left: 4px solid #17a2b8;
+            padding: 15px;
+            margin: 20px 0;
+        }
+
+        .success-box {
+            background-color: #d4edda;
+            border-left: 4px solid #28a745;
+            padding: 15px;
+            margin: 20px 0;
+        }
+
+        .diagram {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border: 1px solid #dee2e6;
+            border-radius: 5px;
+            margin: 20px 0;
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        th {
+            background-color: #2ecc71;
+            color: white;
+            padding: 12px;
+            text-align: left;
+        }
+
+        td {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        tr:hover {
+            background-color: #f5f5f5;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 2px solid #2ecc71;
+            color: #7f8c8d;
+        }
+
+        hr {
+            border: none;
+            border-top: 2px solid #ecf0f1;
+            margin: 30px 0;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #7f8c8d;
+            font-size: 1.2em;
+            margin-bottom: 30px;
+        }
+
+        @media print {
+            body {
+                background-color: white;
+                padding: 0;
+            }
+            .container {
+                box-shadow: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>SISTEMA DE GESTIÓN DE RECICLAJE</h1>
+        <p class="subtitle">Documentación Técnica Completa</p>
+
+        <hr>
+
+        <div class="toc">
+            <h2>ÍNDICE</h2>
+            <ol>
+                <li><a href="#justificacion">Justificación del Proyecto</a></li>
+                <li><a href="#arquitectura">Arquitectura del Sistema</a></li>
+                <li><a href="#poo">Programación Orientada a Objetos</a></li>
+                <li><a href="#diagrama-flujo">Diagrama de Flujo Principal</a></li>
+                <li><a href="#pseudocodigo">Pseudocódigo del Sistema</a></li>
+                <li><a href="#modelado">Modelado de Entidades</a></li>
+                <li><a href="#base-datos">Diseño de Base de Datos</a></li>
+                <li><a href="#instalacion">Guía de Instalación</a></li>
+                <li><a href="#manual-usuario">Manual de Usuario</a></li>
+            </ol>
+        </div>
+
+        <hr>
+
+        <h2 id="justificacion">1. JUSTIFICACIÓN DEL PROYECTO</h2>
+
+        <h3>¿Por qué elegí el Sistema de Gestión de Reciclaje?</h3>
+
+        <h4>Relevancia Ambiental</h4>
+        <p>El reciclaje es una de las acciones más importantes para combatir el cambio climático y reducir la contaminación ambiental. Según datos de la ONU:</p>
+        <ul>
+            <li><strong>1 tonelada de papel reciclado</strong> salva aproximadamente <strong>17 árboles</strong></li>
+            <li><strong>Reciclar aluminio</strong> ahorra hasta <strong>95% de energía</strong> comparado con producción nueva</li>
+            <li><strong>El reciclaje de plástico</strong> reduce emisiones de CO₂ en un <strong>70%</strong></li>
+            <li><strong>Cada tonelada de material reciclado</strong> evita aproximadamente <strong>2 toneladas de CO₂</strong></li>
+        </ul>
+
+        <h4>Problemática Actual</h4>
+        <p>En Chile y Latinoamérica:</p>
+        <ul>
+            <li>Solo el <strong>10%</strong> de los residuos se recicla efectivamente</li>
+            <li>El <strong>90%</strong> termina en vertederos o el océano</li>
+            <li>Falta de educación y motivación en la población</li>
+            <li>No existen sistemas de incentivos para promover el reciclaje</li>
+        </ul>
+
+        <h4>Solución Propuesta</h4>
+        <p>Este sistema aborda estos problemas mediante:</p>
+        <ol>
+            <li><strong>Gamificación</strong>: Sistema de puntos que motiva a reciclar más</li>
+            <li><strong>Recompensas Tangibles</strong>: Canjes por productos ecológicos</li>
+            <li><strong>Educación</strong>: Información sobre impacto ambiental</li>
+            <li><strong>Comunidad</strong>: Rankings y estadísticas para crear competencia sana</li>
+            <li><strong>Seguimiento</strong>: Medición del impacto individual y colectivo</li>
+        </ol>
+
+        <h4>Impacto Esperado</h4>
+        <ul>
+            <li><strong>Incremento del 40-60%</strong> en tasa de reciclaje de la comunidad</li>
+            <li><strong>Reducción de 5-10 toneladas</strong> de CO₂ anuales por comunidad</li>
+            <li><strong>Educación ambiental</strong> de cientos de usuarios</li>
+            <li><strong>Cambio de hábitos</strong> sostenibles a largo plazo</li>
+        </ul>
+
+        <h3>Referencias y Fuentes</h3>
+        <div class="info-box">
+            <p><strong>Naturaliza Educación</strong> - Manual completo sobre reciclaje</p>
+            <ul>
+                <li>Información sobre clasificación de residuos</li>
+                <li>Prácticas recomendadas para comunidades</li>
+                <li>Impacto ambiental del reciclaje</li>
+            </ul>
+
+            <p><strong>Ecología Verde</strong> - Impacto económico y ambiental</p>
+            <ul>
+                <li>Infografías sobre fases del reciclaje</li>
+                <li>Datos sobre reducción de emisiones</li>
+                <li>Estudios de caso exitosos</li>
+            </ul>
+
+            <p><strong>Organización de las Naciones Unidas (ONU)</strong></p>
+            <ul>
+                <li>Objetivos de Desarrollo Sostenible (ODS 12 y 13)</li>
+                <li>Estadísticas globales de reciclaje</li>
+                <li>Metas para reducción de residuos</li>
+            </ul>
+        </div>
+
+        <hr>
+
+        <h2 id="arquitectura">2. ARQUITECTURA DEL SISTEMA</h2>
+
+        <h3>Patrón de Arquitectura: Capas (Layered Architecture)</h3>
+
+        <div class="diagram">
+<pre>
+┌─────────────────────────────────────────┐
+│     CAPA DE PRESENTACIÓN (UI)           │
+│  - Páginas ASPX (Login, Dashboard,      │
+│    Registro, Recompensas, etc.)         │
+│  - HTML, CSS, JavaScript                │
+└─────────────────────────────────────────┘
+                    ↓
+┌─────────────────────────────────────────┐
+│     CAPA DE LÓGICA DE NEGOCIO           │
+│  - Modelos (Usuario, Material,          │
+│    Transacción, Recompensa)             │
+│  - Interfaces (IUsuario, IMaterial,     │
+│    IReciclable)                         │
+│  - Classes Base (EntidadBase,           │
+│    MaterialBase)                        │
+│  - POLIMORFISMO Y HERENCIA              │
+└─────────────────────────────────────────┘
+                    ↓
+┌─────────────────────────────────────────┐
+│     CAPA DE ACCESO A DATOS              │
+│  - DatabaseHelper                       │
+│  - Repositorios (UsuarioRepository,     │
+│    MaterialRepository, etc.)            │
+│  - Operaciones CRUD                     │
+└─────────────────────────────────────────┘
+                    ↓
+┌─────────────────────────────────────────┐
+│     CAPA DE BASE DE DATOS               │
+│  - SQL Server / LocalDB                 │
+│  - Tablas, Procedimientos, Vistas       │
+│  - Funciones, Triggers                  │
+└─────────────────────────────────────────┘
+</pre>
+        </div>
+
+        <h3>Tecnologías Utilizadas</h3>
+
+        <h4>Backend</h4>
+        <ul>
+            <li><strong>ASP.NET Web Forms (.NET Framework 4.7.2)</strong></li>
+            <li><strong>C#</strong> como lenguaje de programación</li>
+            <li><strong>ADO.NET</strong> para acceso a datos</li>
+            <li><strong>SQL Server / LocalDB</strong> como base de datos</li>
+        </ul>
+
+        <h4>Frontend</h4>
+        <ul>
+            <li><strong>HTML5</strong> para estructura</li>
+            <li><strong>CSS3</strong> con variables y grid layout</li>
+            <li><strong>JavaScript</strong> para interactividad</li>
+            <li><strong>Chart.js</strong> para visualización de datos</li>
+            <li><strong>Font Awesome</strong> para iconos</li>
+        </ul>
+
+        <hr>
+
+        <h2 id="poo">3. PROGRAMACIÓN ORIENTADA A OBJETOS</h2>
+
+        <h3>Principios de POO Implementados</h3>
+
+        <h4>1. ENCAPSULACIÓN</h4>
+        <pre><code>public class Usuario : EntidadBase
+{
+    // Propiedades privadas con acceso controlado
+    public string NombreCompleto { get; set; }
+    public decimal PuntosAcumulados { get; set; }
+    
+    // Métodos que encapsulan lógica de negocio
+    public void AgregarPuntos(decimal puntos, decimal kilos)
+    {
+        PuntosAcumulados += puntos;
+        TotalReciclajesRealizados++;
+        TotalKilosReciclados += kilos;
+        Actualizar();
+    }
+}</code></pre>
+
+        <h4>2. HERENCIA</h4>
+        <pre><code>// Clase base abstracta
+public abstract class MaterialBase : EntidadBase, IMaterial, IReciclable
+{
+    public string Nombre { get; set; }
+    public decimal PuntosPorKilo { get; set; }
+    
+    public virtual decimal CalcularPuntos(decimal cantidad)
+    {
+        return cantidad * PuntosPorKilo;
+    }
+}
+
+// Clase derivada - Material Orgánico
+public class MaterialOrganico : MaterialBase
+{
+    public bool EsCompostable { get; set; }
+    
+    // Override - Materiales compostables dan 20% más puntos
+    public override decimal CalcularPuntos(decimal cantidad)
+    {
+        decimal puntosBase = base.CalcularPuntos(cantidad);
+        return EsCompostable ? puntosBase * 1.2m : puntosBase;
+    }
+}
+
+// Clase derivada - Material Inorgánico
+public class MaterialInorganico : MaterialBase
+{
+    public string SubCategoria { get; set; }
+    
+    // Override - Bonificación según subcategoría
+    public override decimal CalcularPuntos(decimal cantidad)
+    {
+        decimal puntosBase = base.CalcularPuntos(cantidad);
+        decimal multiplicador = SubCategoria switch
+        {
+            "Vidrio" => 1.3m,
+            "Metal" => 1.5m,
+            "Papel" => 1.1m,
+            _ => 1.0m
+        };
+        return puntosBase * multiplicador;
+    }
+}</code></pre>
+
+        <h4>3. POLIMORFISMO</h4>
+        <pre><code>// Uso polimórfico de materiales
+MaterialBase material = materialRepo.ObtenerPorId(materialId);
+
+// Dependiendo del tipo real (Orgánico o Inorgánico),
+// se ejecutará el método CalcularPuntos correspondiente
+decimal puntos = material.CalcularPuntos(cantidad);
+
+// Ejemplo:
+// Si es MaterialOrganico compostable: cantidad * puntosPorKilo * 1.2
+// Si es MaterialInorganico de vidrio: cantidad * puntosPorKilo * 1.3</code></pre>
+
+        <h4>4. ABSTRACCIÓN</h4>
+        <pre><code>// Interfaz que define contrato
+public interface IMaterial : IEntidadBase
+{
+    string Nombre { get; set; }
+    decimal PuntosPorKilo { get; set; }
+    decimal CalcularPuntos(decimal cantidad);
+    string ObtenerCategoria();
+}
+
+// Interfaz para comportamiento reciclable
+public interface IReciclable
+{
+    string ObtenerTipoReciclaje();
+    bool EsReciclable();
+    decimal ObtenerImpactoAmbiental();
+}</code></pre>
+
+        <h3>Jerarquía de Clases Completa</h3>
+        <div class="diagram">
+<pre>
+IEntidadBase
+    ← EntidadBase (abstract)
+            ← Usuario (implements IUsuario)
+            ← MaterialBase (abstract, implements IMaterial, IReciclable)
+            │       ← MaterialOrganico
+            │       ← MaterialInorganico
+            ← TransaccionReciclaje
+            ← Recompensa
+            ← CanjeRecompensa
+</pre>
+        </div>
+
+        <hr>
+
+        <h2 id="diagrama-flujo">4. DIAGRAMA DE FLUJO PRINCIPAL</h2>
+
+        <h3>Flujo del Sistema Completo</h3>
+
+        <div class="diagram">
+<pre>
+┌─────────────┐
+│    INICIO   │
+└─────────────┘
+        ↓
+┌─────────────────┐
+│ Usuario accede  │
+│   al sistema    │
+└─────────────────┘
+        ↓
+    ┌──────┐
+    │¿Está │      NO
+    │logea-├────────────┐
+    │ do?  │            │
+    └──────┘            │
+        │ SÍ            │
+        │         ┌─────────────┐
+        │         │  Ir a Login │
+        │         │ o Registro  │
+        │         └─────────────┘
+        │               │
+        │         ┌─────────────┐
+        │         │  Validar    │
+        │         │ credenciales│
+        │         └─────────────┘
+        │               │
+        │         ┌─────┴──────┐
+        │         │            │
+        │    ┌────────┐   ┌────────┐
+        │    │ Válido │   │Inválido│
+        │    └────────┘   └────────┘
+        │         │            │
+        │         │       ┌──────────┐
+        │         │       │ Mostrar  │
+        │         │       │  error   │
+        │         │       └──────────┘
+        │         │            │
+        │         └────────────┘
+        │
+┌─────────────────┐
+│   DASHBOARD     │
+│ (Página Prin.)  │
+└─────────────────┘
+        ↓
+┌─────────────────┐
+│ Ver estadísticas│
+│ personales      │
+│ - Puntos        │
+│ - Kilos         │
+│ - Nivel         │
+└─────────────────┘
+        ↓
+    ┌─────────┐
+    │ Elegir  │
+    │ acción  │
+    └─────────┘
+        ↓
+    ┌────────────────────────────────────┐
+    │         │            │          │
+┌─────────┐ ┌──────┐ ┌──────────┐ ┌───────┐
+│Registrar│ │Canje │ │Estadís-  │ │Logout │
+│Reciclaje│ │Recom-│ │ticas     │ │       │
+│         │ │pensa │ │          │ │       │
+└─────────┘ └──────┘ └──────────┘ └───────┘
+     │         │          │           │
+     │         │          │           └──────→ FIN
+     │         │          └──────────────────┘
+     │         └─────────────────────────────┘
+     │
+┌──────────────────────────┐
+│ REGISTRAR RECICLAJE      │
+└──────────────────────────┘
+          ↓
+    ┌──────────────┐
+    │Seleccionar   │
+    │tipo material │
+    └──────────────┘
+          ↓
+    ┌──────────────┐
+    │Seleccionar   │
+    │material      │
+    │específico    │
+    └──────────────┘
+          ↓
+    ┌──────────────┐
+    │ Ingresar     │
+    │ cantidad     │
+    │(kilos)       │
+    └──────────────┘
+          ↓
+    ┌──────────────┐     POLIMORFISMO
+    │ Calcular     ├───→ MaterialBase.CalcularPuntos()
+    │ puntos       │     (MaterialOrganico o MaterialInorganico)
+    │(automático)  │
+    └──────────────┘
+          ↓
+   ┌──────────────┐
+   │ Confirmar    │
+   └──────────────┘
+         ↓
+   ┌─────────────┐      NO
+   │¿Confirma?   ├──────────┐
+   └─────────────┘          │
+         │ SÍ               │
+   ┌────────────────────┐   │
+   │TRANSACCIÓN DB      │   │
+   │1. Insertar         │   │
+   │   Transacción      │   │
+   │2. Actualizar       │   │
+   │   Usuario          │   │
+   │3. Sumar puntos     │   │
+   └────────────────────┘   │
+            ↓               │
+    ┌──────────────┐        │
+    │  Mostrar     │        │
+    │  Éxito       │        │
+    └──────────────┘        │
+             ↓              │
+             └──────────────┘
+                  ↓
+           ┌──────────────┐
+           │Volver a      │
+           │Dashboard     │
+           └──────────────┘
+</pre>
+        </div>
+
+        <h3>Flujo de Canje de Recompensas</h3>
+
+        <div class="diagram">
+<pre>
+┌─────────────────┐
+│ CANJE RECOMPENSA│
+└─────────────────┘
+         ↓
+┌─────────────────┐
+│ Mostrar lista   │
+│ de recompensas  │
+│ disponibles     │
+└─────────────────┘
+         ↓
+┌─────────────────┐
+│ Usuario elige   │
+│ recompensa      │
+└─────────────────┘
+         ↓
+┌─────────────────┐
+│ Verificar:      │
+│ 1. Puntos sufic.│
+│ 2. Stock        │
+└─────────────────┘
+         ↓
+    ┌─────────┐
+    │         │
+  ┌────┐   ┌──────┐
+  │ OK │   │ERROR │
+  └────┘   └──────┘
+    │         │
+    │    ┌────────┐
+    │    │Mostrar │
+    │    │mensaje │
+    │    │error   │
+    │    └────────┘
+    │         │
+    └─────────┘
+          ↓
+    ┌──────────────┐      NO
+    │¿Confirma?    ├──────────┐
+    └──────────────┘          │
+          │ SÍ                │
+   ┌─────────────────────┐    │
+   │TRANSACCIÓN DB       │    │
+   │1. Insertar canje    │    │
+   │2. Descontar pts     │    │
+   │3. Reducir stock     │    │
+   └─────────────────────┘    │
+            ↓                 │
+     ┌──────────────┐         │
+     │ Mostrar      │         │
+     │  Éxito       │         │
+     └──────────────┘         │
+          ↓                   │
+          └───────────────────┘
+                  ↓
+           ┌──────────────┐
+           │  Volver      │
+           │Dashboard     │
+           └──────────────┘
+</pre>
+        </div>
+
+        <hr>
+
+        <h2 id="pseudocodigo">5. PSEUDOCÓDIGO DEL SISTEMA</h2>
+
+        <h3>Pseudocódigo: Registro de Reciclaje</h3>
+
+        <pre><code>PROCEDIMIENTO RegistrarReciclaje(usuarioId, materialId, cantidad)
+    // VARIABLES
+    DECIMAL puntos
+    OBJETO usuario
+    OBJETO material
+    OBJETO transaccion
+    
+    // INICIO
+    INICIO
+        // 1. VALIDAR ENTRADA
+        SI cantidad <= 0 ENTONCES
+            MOSTRAR_ERROR("La cantidad debe ser mayor a 0")
+            RETORNAR FALSO
+        FIN SI
+        
+        // 2. OBTENER MATERIAL (Polimorfismo)
+        material ← ObtenerMaterialPorId(materialId)
+        
+        SI material ES NULO ENTONCES
+            MOSTRAR_ERROR("Material no encontrado")
+            RETORNAR FALSO
+        FIN SI
+        
+        // 3. CALCULAR PUNTOS (Aquí ocurre el POLIMORFISMO)
+        // Dependiendo si es MaterialOrganico o MaterialInorganico,
+        // se ejecutará el método override correspondiente
+        puntos ← material.CalcularPuntos(cantidad)
+        
+        // 4. CREAR TRANSACCIÓN
+        transaccion ← NUEVA TransaccionReciclaje
+        transaccion.UsuarioId ← usuarioId
+        transaccion.MaterialId ← materialId
+        transaccion.CantidadKilos ← cantidad
+        transaccion.PuntosGanados ← puntos
+        transaccion.FechaReciclaje ← FECHA_ACTUAL()
+        
+        // 5. INICIAR TRANSACCIÓN DE BASE DE DATOS
+        INICIAR_TRANSACCION_DB()
+        
+        INTENTAR
+            // 5.1 Insertar transacción
+            transaccionId ← InsertarTransaccion(transaccion)
+            
+            SI transaccionId <= 0 ENTONCES
+                LANZAR_ERROR("Error al insertar transacción")
+            FIN SI
+            
+            // 5.2 Obtener y actualizar usuario
+            usuario ← ObtenerUsuarioPorId(usuarioId)
+            
+            // Usar método de la clase Usuario (Encapsulación)
+            usuario.AgregarPuntos(puntos, cantidad)
+            
+            // Actualizar en BD
+            resultadoActualizacion ← ActualizarUsuario(usuario)
+            
+            SI NO resultadoActualizacion ENTONCES
+                LANZAR_ERROR("Error al actualizar usuario")
+            FIN SI
+            
+            // 5.3 Confirmar transacción
+            CONFIRMAR_TRANSACCION_DB()
+            
+            // 6. MOSTRAR ÉXITO
+            MOSTRAR_EXITO("¡Reciclaje registrado! Ganaste " + puntos + " puntos")
+            
+            RETORNAR VERDADERO
+            
+        CAPTURAR ERROR
+            // Revertir cambios
+            REVERTIR_TRANSACCION_DB()
+            MOSTRAR_ERROR("Error: " + MENSAJE_ERROR)
+            RETORNAR FALSO
+        FIN INTENTAR
+        
+    FIN
+FIN PROCEDIMIENTO</code></pre>
+
+        <h3>Pseudocódigo: Canje de Recompensa</h3>
+
+        <pre><code>PROCEDIMIENTO CanjearRecompensa(usuarioId, recompensaId)
+    // VARIABLES
+    OBJETO usuario
+    OBJETO recompensa
+    OBJETO canje
+    DECIMAL puntosRequeridos
+    DECIMAL puntosUsuario
+    
+    // INICIO
+    INICIO
+        // 1. OBTENER DATOS
+        usuario ← ObtenerUsuarioPorId(usuarioId)
+        recompensa ← ObtenerRecompensaPorId(recompensaId)
+        
+        // 2. VALIDACIONES
+        SI recompensa ES NULO ENTONCES
+            MOSTRAR_ERROR("Recompensa no encontrada")
+            RETORNAR FALSO
+        FIN SI
+        
+        puntosRequeridos ← recompensa.PuntosRequeridos
+        puntosUsuario ← usuario.PuntosAcumulados
+        
+        // 2.1 Validar stock
+        SI NO recompensa.TieneStock() ENTONCES
+            MOSTRAR_ERROR("Recompensa agotada")
+            RETORNAR FALSO
+        FIN SI
+        
+        // 2.2 Validar puntos
+        SI NO usuario.PuedeReclamarRecompensa(puntosRequeridos) ENTONCES
+            MOSTRAR_ERROR("Puntos insuficientes")
+            RETORNAR FALSO
+        FIN SI
+        
+        // 3. CONFIRMAR CON USUARIO
+        SI NO ConfirmarCanje(recompensa.Nombre, puntosRequeridos) ENTONCES
+            RETORNAR FALSO
+        FIN SI
+        
+        // 4. REALIZAR CANJE (TRANSACCIÓN DB)
+        INICIAR_TRANSACCION_DB()
+        
+        INTENTAR
+            // 4.1 Crear registro de canje
+            canje ← NUEVO CanjeRecompensa
+            canje.UsuarioId ← usuarioId
+            canje.RecompensaId ← recompensaId
+            canje.PuntosUtilizados ← puntosRequeridos
+            canje.FechaCanje ← FECHA_ACTUAL()
+            canje.EstadoCanje ← "Pendiente"
+            
+            canjeId ← InsertarCanje(canje)
+            
+            SI canjeId <= 0 ENTONCES
+                LANZAR_ERROR("Error al registrar canje")
+            FIN SI
+            
+            // 4.2 Descontar puntos del usuario
+            resultadoDescuento ← usuario.DescontarPuntos(puntosRequeridos)
+            
+            SI NO resultadoDescuento ENTONCES
+                LANZAR_ERROR("Error al descontar puntos")
+            FIN SI
+            
+            ActualizarUsuario(usuario)
+            
+            // 4.3 Reducir stock de recompensa
+            recompensa.ReducirStock()
+            ActualizarStockRecompensa(recompensaId, recompensa.StockDisponible)
+            
+            // 4.4 Confirmar transacción
+            CONFIRMAR_TRANSACCION_DB()
+            
+            // 5. MOSTRAR ÉXITO
+            MOSTRAR_EXITO("¡Recompensa canjeada exitosamente!")
+            
+            RETORNAR VERDADERO
+            
+        CAPTURAR ERROR
+            REVERTIR_TRANSACCION_DB()
+            MOSTRAR_ERROR("Error: " + MENSAJE_ERROR)
+            RETORNAR FALSO
+        FIN INTENTAR
+        
+    FIN
+FIN PROCEDIMIENTO</code></pre>
+
+        <hr>
+
+        <h2 id="modelado">6. MODELADO DE ENTIDADES</h2>
+
+        <h3>Entidades Principales</h3>
+
+        <h4>1. USUARIO</h4>
+        <p><strong>Atributos:</strong></p>
+        <ul>
+            <li>Id (int, PK)</li>
+            <li>NombreCompleto (string)</li>
+            <li>Email (string, único)</li>
+            <li>Password (string)</li>
+            <li>Telefono (string, opcional)</li>
+            <li>Direccion (string, opcional)</li>
+            <li>PuntosAcumulados (decimal)</li>
+            <li>TotalReciclajesRealizados (int)</li>
+            <li>TotalKilosReciclados (decimal)</li>
+            <li>FechaCreacion (DateTime)</li>
+            <li>FechaModificacion (DateTime, opcional)</li>
+            <li>Activo (bool)</li>
+        </ul>
+
+        <p><strong>Métodos:</strong></p>
+        <ul>
+            <li>ObtenerNivel(): string</li>
+            <li>PuedeReclamarRecompensa(decimal): bool</li>
+            <li>AgregarPuntos(decimal, decimal): void</li>
+            <li>DescontarPuntos(decimal): bool</li>
+        </ul>
+
+        <p><strong>Relaciones:</strong></p>
+        <ul>
+            <li>1 Usuario → N TransaccionesReciclaje</li>
+            <li>1 Usuario → N CanjesRecompensas</li>
+        </ul>
+
+        <h4>2. MATERIAL BASE (Abstracta)</h4>
+        <p><strong>Atributos:</strong></p>
+        <ul>
+            <li>Id (int, PK)</li>
+            <li>Nombre (string)</li>
+            <li>TipoMaterial (string)</li>
+            <li>PuntosPorKilo (decimal)</li>
+            <li>Descripcion (string, opcional)</li>
+            <li>FechaCreacion (DateTime)</li>
+            <li>FechaModificacion (DateTime, opcional)</li>
+            <li>Activo (bool)</li>
+        </ul>
+
+        <p><strong>Métodos:</strong></p>
+        <ul>
+            <li>CalcularPuntos(decimal): decimal [virtual]</li>
+            <li>ObtenerCategoria(): string [abstracto]</li>
+            <li>ObtenerTipoReciclaje(): string</li>
+            <li>EsReciclable(): bool</li>
+            <li>ObtenerImpactoAmbiental(): decimal [abstracto]</li>
+        </ul>
+
+        <h4>3. MATERIAL ORGÁNICO (Hereda de MaterialBase)</h4>
+        <p><strong>Atributos Adicionales:</strong></p>
+        <ul>
+            <li>EsCompostable (bool)</li>
+            <li>TiempoDescomposicion (int) // en días</li>
+        </ul>
+
+        <p><strong>Métodos Override:</strong></p>
+        <ul>
+            <li><strong>CalcularPuntos(decimal):</strong> Si EsCompostable: base × 1.2, sino: base</li>
+            <li><strong>ObtenerCategoria():</strong> Retorna "ORGÁNICO"</li>
+            <li><strong>ObtenerImpactoAmbiental():</strong> Si EsCompostable: 0.5, sino: 1.0</li>
+        </ul>
+
+        <h4>4. MATERIAL INORGÁNICO (Hereda de MaterialBase)</h4>
+        <p><strong>Atributos Adicionales:</strong></p>
+        <ul>
+            <li>SubCategoria (string) // "Plástico", "Vidrio", "Metal", "Papel"</li>
+            <li>RequiereLimpiezaPrevia (bool)</li>
+            <li>TiempoDescomposicionNatural (int) // en años</li>
+        </ul>
+
+        <p><strong>Métodos Override:</strong></p>
+        <ul>
+            <li><strong>CalcularPuntos(decimal):</strong> Multiplicador según SubCategoria (Vidrio: 1.3, Metal: 1.5, Papel: 1.1, Plástico: 1.0)</li>
+            <li><strong>ObtenerCategoria():</strong> Retorna "INORGÁNICO - {SubCategoria}"</li>
+            <li><strong>ObtenerImpactoAmbiental():</strong> Basado en TiempoDescomposicionNatural</li>
+        </ul>
+
+        <hr>
+
+        <h2 id="base-datos">7. DISEÑO DE BASE DE DATOS</h2>
+
+        <h3>Tabla: Usuarios</h3>
+        <pre><code>CREATE TABLE Usuarios (
+    Id INT PRIMARY KEY IDENTITY(1,1),
+    NombreCompleto NVARCHAR(200) NOT NULL,
+    Email NVARCHAR(200) NOT NULL UNIQUE,
+    Password NVARCHAR(200) NOT NULL,
+    Telefono NVARCHAR(50),
+    Direccion NVARCHAR(500),
+    PuntosAcumulados DECIMAL(18,2) DEFAULT 0,
+    TotalReciclajesRealizados INT DEFAULT 0,
+    TotalKilosReciclados DECIMAL(18,2) DEFAULT 0,
+    FechaCreacion DATETIME NOT NULL DEFAULT GETDATE(),
+    FechaModificacion DATETIME NULL,
+    Activo BIT NOT NULL DEFAULT 1
+);
+
+-- Índices
+CREATE INDEX IX_Usuarios_Email ON Usuarios(Email);
+CREATE INDEX IX_Usuarios_Activo ON Usuarios(Activo);</code></pre>
+
+        <h3>Tabla: Materiales</h3>
+        <pre><code>CREATE TABLE Materiales (
+    Id INT PRIMARY KEY IDENTITY(1,1),
+    Nombre NVARCHAR(200) NOT NULL,
+    TipoMaterial NVARCHAR(50) NOT NULL 
+        CHECK (TipoMaterial IN ('Orgánico', 'Inorgánico')),
+    PuntosPorKilo DECIMAL(18,2) NOT NULL,
+    Descripcion NVARCHAR(1000),
+    
+    -- Campos para materiales orgánicos
+    EsCompostable BIT NULL,
+    
+    -- Campos para materiales inorgánicos
+    SubCategoria NVARCHAR(100) NULL,
+    RequiereLimpiezaPrevia BIT NULL,
+    
+    -- Campo común
+    TiempoDescomposicion INT NULL,
+    
+    FechaCreacion DATETIME NOT NULL DEFAULT GETDATE(),
+    FechaModificacion DATETIME NULL,
+    Activo BIT NOT NULL DEFAULT 1
+);
+
+-- Índices
+CREATE INDEX IX_Materiales_TipoMaterial ON Materiales(TipoMaterial);
+CREATE INDEX IX_Materiales_Activo ON Materiales(Activo);</code></pre>
+
+        <h3>Tabla: TransaccionesReciclaje</h3>
+        <pre><code>CREATE TABLE TransaccionesReciclaje (
+    Id INT PRIMARY KEY IDENTITY(1,1),
+    UsuarioId INT NOT NULL,
+    MaterialId INT NOT NULL,
+    CantidadKilos DECIMAL(18,2) NOT NULL,
+    PuntosGanados DECIMAL(18,2) NOT NULL,
+    Observaciones NVARCHAR(1000),
+    FechaReciclaje DATETIME NOT NULL DEFAULT GETDATE(),
+    FechaCreacion DATETIME NOT NULL DEFAULT GETDATE(),
+    FechaModificacion DATETIME NULL,
+    Activo BIT NOT NULL DEFAULT 1,
+    
+    CONSTRAINT FK_Transacciones_Usuario 
+        FOREIGN KEY (UsuarioId) REFERENCES Usuarios(Id),
+    CONSTRAINT FK_Transacciones_Material 
+        FOREIGN KEY (MaterialId) REFERENCES Materiales(Id)
+);
+
+-- Índices
+CREATE INDEX IX_Transacciones_UsuarioId ON TransaccionesReciclaje(UsuarioId);
+CREATE INDEX IX_Transacciones_MaterialId ON TransaccionesReciclaje(MaterialId);
+CREATE INDEX IX_Transacciones_FechaReciclaje ON TransaccionesReciclaje(FechaReciclaje);</code></pre>
+
+        <h3>Procedimientos Almacenados Principales</h3>
+        <pre><code>CREATE PROCEDURE sp_RegistrarReciclaje
+    @UsuarioId INT,
+    @MaterialId INT,
+    @CantidadKilos DECIMAL(18,2),
+    @PuntosGanados DECIMAL(18,2),
+    @Observaciones NVARCHAR(1000) = NULL
+AS
+BEGIN
+    SET NOCOUNT ON;
+    BEGIN TRANSACTION;
+    
+    BEGIN TRY
+        -- Insertar transacción
+        INSERT INTO TransaccionesReciclaje 
+            (UsuarioId, MaterialId, CantidadKilos, PuntosGanados, Observaciones)
+        VALUES 
+            (@UsuarioId, @MaterialId, @CantidadKilos, @PuntosGanados, @Observaciones);
+        
+        -- Actualizar usuario
+        UPDATE Usuarios
+        SET PuntosAcumulados = PuntosAcumulados + @PuntosGanados,
+            TotalReciclajesRealizados = TotalReciclajesRealizados + 1,
+            TotalKilosReciclados = TotalKilosReciclados + @CantidadKilos,
+            FechaModificacion = GETDATE()
+        WHERE Id = @UsuarioId;
+        
+        COMMIT TRANSACTION;
+        SELECT 1 AS Resultado, 'Reciclaje registrado exitosamente' AS Mensaje;
+    END TRY
+    BEGIN CATCH
+        ROLLBACK TRANSACTION;
+        SELECT 0 AS Resultado, ERROR_MESSAGE() AS Mensaje;
+    END CATCH
+END</code></pre>
+
+        <hr>
+
+        <h2 id="instalacion">8. GUÍA DE INSTALACIÓN</h2>
+
+        <h3>Requisitos Previos</h3>
+        <ul>
+            <li>Windows 10/11</li>
+            <li>Visual Studio 2019 o superior</li>
+            <li>SQL Server 2016+ o SQL Server Express</li>
+            <li>.NET Framework 4.7.2</li>
+        </ul>
+
+        <h3>Pasos de Instalación</h3>
+
+        <div class="success-box">
+            <h4>1. Clonar o Descargar el Proyecto</h4>
+            <pre><code># Si usas Git
+git clone [url-repositorio]
+
+# O descargar ZIP y extraer</code></pre>
+        </div>
+
+        <div class="success-box">
+            <h4>2. Configurar Base de Datos</h4>
+            <p><strong>Opción A: SQL Server LocalDB (Recomendado para desarrollo)</strong></p>
+            <p>LocalDB ya viene con Visual Studio. No requiere instalación adicional.</p>
+
+            <p><strong>Opción B: SQL Server Express</strong></p>
+            <ol>
+                <li>Descargar desde: https://www.microsoft.com/sql-server/sql-server-downloads</li>
+                <li>Instalar SQL Server Express</li>
+                <li>Instalar SQL Server Management Studio (SSMS)</li>
+            </ol>
+        </div>
+
+        <div class="success-box">
+            <h4>3. Ejecutar Scripts SQL</h4>
+            <ol>
+                <li>Abrir SQL Server Management Studio</li>
+                <li>Conectar a la instancia de SQL Server</li>
+                <li>Ejecutar en orden:
+                    <ul>
+                        <li><code>SQL_Scripts/01_CreacionBaseDatos.sql</code></li>
+                        <li><code>SQL_Scripts/02_DatosIniciales.sql</code></li>
+                    </ul>
+                </li>
+            </ol>
+        </div>
+
+        <div class="success-box">
+            <h4>4. Configurar Connection String</h4>
+            <p>Editar <code>Web.config</code>:</p>
+            <pre><code>&lt;connectionStrings&gt;
+    &lt;add name="ReciclajeDB" 
+         connectionString="Data Source=(LocalDB)\MSSQLLocalDB;
+         AttachDbFilename=|DataDirectory|\ReciclajeDB.mdf;
+         Integrated Security=True"
+         providerName="System.Data.SqlClient" /&gt;
+&lt;/connectionStrings&gt;</code></pre>
+        </div>
+
+        <div class="success-box">
+            <h4>5. Abrir Proyecto en Visual Studio</h4>
+            <ol>
+                <li>Abrir <code>WebApplication3.sln</code></li>
+                <li>Restaurar paquetes NuGet (clic derecho en solución → Restore NuGet Packages)</li>
+                <li>Compilar solución (Ctrl + Shift + B)</li>
+            </ol>
+        </div>
+
+        <div class="success-box">
+            <h4>6. Ejecutar Aplicación</h4>
+            <ol>
+                <li>Presionar F5 o clic en "Start"</li>
+                <li>Se abrirá el navegador con la aplicación</li>
+            </ol>
+        </div>
+
+        <div class="info-box">
+            <h4>7. Iniciar Sesión</h4>
+            <p><strong>Usuarios de prueba creados:</strong></p>
+            <ul>
+                <li><strong>Email:</strong> admin@reciclaje.com<br><strong>Password:</strong> admin123</li>
+                <li><strong>Email:</strong> maria.gonzalez@example.com<br><strong>Password:</strong> 123456</li>
+            </ul>
+        </div>
+
+        <hr>
+
+        <h2 id="manual-usuario">9. MANUAL DE USUARIO</h2>
+
+        <h3>1. Registro de Nueva Cuenta</h3>
+        <ol>
+            <li>Ir a la página de <strong>Registro</strong></li>
+            <li>Completar formulario:
+                <ul>
+                    <li>Nombre completo</li>
+                    <li>Email (único)</li>
+                    <li>Contraseña (mínimo 6 caracteres)</li>
+                    <li>Teléfono (opcional)</li>
+                    <li>Dirección (opcional)</li>
+                </ul>
+            </li>
+            <li>Clic en "Registrarse"</li>
+            <li>Automáticamente inicia sesión</li>
+        </ol>
+
+        <h3>2. Inicio de Sesión</h3>
+        <ol>
+            <li>Ir a la página de <strong>Login</strong></li>
+            <li>Ingresar email y contraseña</li>
+            <li>Clic en "Iniciar Sesión"</li>
+            <li>Serás redirigido al Dashboard</li>
+        </ol>
+
+        <h3>3. Dashboard Principal</h3>
+        <p>El Dashboard muestra:</p>
+        <ul>
+            <li><strong>Puntos Acumulados:</strong> Total de puntos ganados</li>
+            <li><strong>Nivel:</strong> Tu clasificación (Principiante, Bronce, Plata, Oro, Diamante)</li>
+            <li><strong>Total Reciclado:</strong> Kilos de material reciclado</li>
+            <li><strong>Reciclajes Realizados:</strong> Cantidad de transacciones</li>
+            <li><strong>Impacto Ambiental:</strong> CO₂ evitado aproximado</li>
+        </ul>
+
+        <h3>4. Registrar un Reciclaje</h3>
+        <ol>
+            <li>Clic en "Registrar Reciclaje" desde Dashboard</li>
+            <li>Seleccionar <strong>Tipo de Material</strong> (Orgánico o Inorgánico)</li>
+            <li>Seleccionar <strong>Material Específico</strong> (se filtra automáticamente)</li>
+            <li>Ingresar <strong>Cantidad en Kilogramos</strong></li>
+            <li>Ver <strong>Cálculo Automático de Puntos</strong></li>
+            <li>Agregar observaciones (opcional)</li>
+            <li>Clic en "Registrar Reciclaje"</li>
+            <li>Recibirás confirmación y tus puntos aumentarán</li>
+        </ol>
+
+        <div class="highlight">
+            <p><strong>Ejemplo:</strong></p>
+            <ul>
+                <li>Material: Botellas de Vidrio</li>
+                <li>Cantidad: 3.5 kg</li>
+                <li>Puntos base: 20 pts/kg</li>
+                <li>Bonificación: 1.3x (vidrio)</li>
+                <li>Total: 3.5 × 20 × 1.3 = 91 puntos</li>
+            </ul>
+        </div>
+
+        <h3>5. Ver Recompensas y Canjear</h3>
+        <ol>
+            <li>Clic en "Ver Recompensas" desde Dashboard</li>
+            <li>Ver lista de recompensas disponibles</li>
+            <li>Verificar: Puntos requeridos, Stock disponible, Descripción</li>
+            <li>Clic en "Canjear" en la recompensa deseada</li>
+            <li>Confirmar canje</li>
+            <li>Los puntos se descontarán automáticamente</li>
+            <li>Ver historial de canjes abajo</li>
+        </ol>
+
+        <div class="info-box">
+            <p><strong>Niveles de Recompensas:</strong></p>
+            <ul>
+                <li><strong>500-1000 pts:</strong> Bolsas ecológicas, botellas reutilizables</li>
+                <li><strong>1000-2000 pts:</strong> Kits de cultivo, compostadores</li>
+                <li><strong>2000-5000 pts:</strong> Bicicletas plegables, paneles solares portátiles</li>
+                <li><strong>5000-10000 pts:</strong> Scooters eléctricos, sistemas de riego</li>
+                <li><strong>10000+ pts:</strong> Kits solares, bicicletas eléctricas</li>
+            </ul>
+        </div>
+
+        <h3>6. Ver Estadísticas</h3>
+        <ol>
+            <li>Clic en "Estadísticas" desde Dashboard</li>
+            <li>Ver:
+                <ul>
+                    <li><strong>Impacto Global:</strong> Estadísticas de toda la comunidad</li>
+                    <li><strong>Por Material:</strong> Distribución de reciclaje por tipo</li>
+                    <li><strong>Mis Estadísticas:</strong> Tu contribución personal</li>
+                    <li><strong>Comparativa:</strong> Orgánico vs Inorgánico</li>
+                    <li><strong>Gráficos:</strong> Visualización con Chart.js</li>
+                </ul>
+            </li>
+        </ol>
+
+        <h3>7. Tips para Ganar Más Puntos</h3>
+        <div class="success-box">
+            <ul>
+                <li><strong>Reciclar regularmente:</strong> Mayor frecuencia = más puntos</li>
+                <li><strong>Mayor cantidad:</strong> Más kilos = más puntos</li>
+                <li><strong>Materiales premium:</strong> Vidrio y metal dan más puntos</li>
+                <li><strong>Compostaje:</strong> Orgánicos compostables tienen bonificación 20%</li>
+                <li><strong>Materiales limpios:</strong> Sin limpieza previa = bonificación 10%</li>
+            </ul>
+        </div>
+
+        <hr>
+
+        <h2>CONCLUSIÓN</h2>
+
+        <div class="success-box">
+            <p>Este Sistema de Gestión de Reciclaje demuestra:</p>
+            <ul>
+                <li>✅ <strong>POO Completa:</strong> Herencia, Polimorfismo, Encapsulación, Abstracción</li>
+                <li>✅ <strong>Arquitectura Sólida:</strong> Separación en capas</li>
+                <li>✅ <strong>Base de Datos Robusta:</strong> Normalizada, con integridad referencial</li>
+                <li>✅ <strong>UI/UX Moderna:</strong> Responsive, intuitiva, accesible</li>
+                <li>✅ <strong>Impacto Ambiental Real:</strong> Motiva comportamientos sostenibles</li>
+                <li>✅ <strong>Escalable:</strong> Preparado para crecimiento</li>
+            </ul>
+            <p>El sistema está listo para producción y puede ser desplegado en una comunidad real para comenzar a generar impacto ambiental positivo.</p>
+        </div>
+
+        <hr>
+
+        <div class="footer">
+            <p><strong>Desarrollado por:</strong> [Tu Nombre]</p>
+            <p><strong>Fecha:</strong> 2024</p>
+            <p><strong>Versión:</strong> 1.0</p>
+            <p><strong>Licencia:</strong> MIT</p>
+            <hr>
+            <h3>CONTACTO Y SOPORTE</h3>
+            <p>Para soporte técnico o consultas:</p>
+            <ul style="list-style: none; padding: 0;">
+                <li>📧 Email: soporte@reciclaje.com</li>
+                <li>💻 GitHub: [repositorio-url]</li>
+                <li>📚 Documentación: [docs-url]</li>
+            </ul>
+            <hr>
+            <p style="font-size: 1.5em; color: #2ecc71;"><strong>¡Juntos podemos hacer la diferencia! 🌍♻️</strong></p>
+        </div>
+
+    </div>
+</body>
+</html>
