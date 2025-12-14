@@ -1,0 +1,8 @@
+﻿using System.Web.UI;
+
+namespace WebApplication3
+{
+    public partial class Registro : System.Web.UI.Page
+    {
+    }
+}

@@ -1,0 +1,19 @@
+﻿using System.Web.UI;
+
+namespace WebApplication3
+{
+    public partial class Dashboard : System.Web.UI.Page
+    {
+        protected global::System.Web.UI.WebControls.Label lblUsuarioNombre;
+        protected global::System.Web.UI.WebControls.Label lblPuntosAcumulados;
+        protected global::System.Web.UI.WebControls.Label lblNivel;
+        protected global::System.Web.UI.WebControls.Label lblTotalKilos;
+        protected global::System.Web.UI.WebControls.Label lblTotalTransacciones;
+        protected global::System.Web.UI.WebControls.Label lblImpactoAmbiental;
+        protected global::System.Web.UI.HyperLink lnkRegistrarReciclaje;
+        protected global::System.Web.UI.HyperLink lnkRecompensas;
+        protected global::System.Web.UI.HyperLink lnkEstadisticas;
+        protected global::System.Web.UI.WebControls.GridView gvTransacciones;
+        protected global::System.Web.UI.WebControls.GridView gvRanking;
+    }
+}

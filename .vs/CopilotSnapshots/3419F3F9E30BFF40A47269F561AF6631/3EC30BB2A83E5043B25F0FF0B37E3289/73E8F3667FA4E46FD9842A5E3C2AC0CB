@@ -1,0 +1,27 @@
+﻿using System.Web.UI;
+
+namespace WebApplication3
+{
+    public partial class RegistrarReciclaje : System.Web.UI.Page
+    {
+        protected global::System.Web.UI.WebControls.Panel pnlMensaje;
+        protected global::System.Web.UI.WebControls.Label lblMensaje;
+        protected global::System.Web.UI.WebControls.DropDownList ddlTipoMaterial;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvTipo;
+        protected global::System.Web.UI.WebControls.DropDownList ddlMaterial;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvMaterial;
+        protected global::System.Web.UI.WebControls.Panel pnlInfoMaterial;
+        protected global::System.Web.UI.WebControls.Label lblMaterialNombre;
+        protected global::System.Web.UI.WebControls.Label lblMaterialDescripcion;
+        protected global::System.Web.UI.WebControls.Label lblPuntosPorKilo;
+        protected global::System.Web.UI.WebControls.Label lblCategoria;
+        protected global::System.Web.UI.WebControls.TextBox txtCantidad;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvCantidad;
+        protected global::System.Web.UI.WebControls.RangeValidator rvCantidad;
+        protected global::System.Web.UI.WebControls.Panel pnlCalculoPuntos;
+        protected global::System.Web.UI.WebControls.Label lblPuntosCalculados;
+        protected global::System.Web.UI.WebControls.TextBox txtObservaciones;
+        protected global::System.Web.UI.WebControls.Button btnRegistrar;
+        protected global::System.Web.UI.WebControls.HyperLink lnkCancelar;
+    }
+}
